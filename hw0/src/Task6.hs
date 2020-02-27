@@ -24,13 +24,16 @@ mapMaybe f (x : xs) =
       Nothing -> rs
       Just r  -> r : rs
 
-fun1 :: (Either String a, Either String b)
-fun1 = Task1.distributivity (Left ("harold" ++ " hide " ++ "the " ++ "pain"))
+-- | function that returns two left harolds
 -- WHNF: ( Left "harold" ++ " hide " ++ "the " ++ "pain"
 --       , Left "harold" ++ " hide " ++ "the " ++ "pain")
+fun1 :: (Either String a, Either String b)
+fun1 = Task1.distributivity (Left ("harold" ++ " hide " ++ "the " ++ "pain"))
 
+
+-- | function that returns False
+-- WHNF: False
+-- Because we will not get weak head normal form
+-- before null will be executed
 fun2 :: Bool
 fun2 = Task6.null $ mapMaybe foo "pole chudes ochen' chudesno"
--- WHNF: False
--- Because we will not get week head nornal form
--- before null will be executed

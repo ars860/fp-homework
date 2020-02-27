@@ -6,12 +6,17 @@ module Task1
   , eitherAssoc
   ) where
 
+-- | function that takes (a | (b, c)) and returns
+-- (a | b, a | c)
+-- where "|" is a short notation for Either
 distributivity
   :: Either a (b, c)
   -> (Either a b, Either a c)
 distributivity (Left x)       = (Left x, Left x)
 distributivity (Right (x, y)) = (Right x, Right y)
 
+-- | function that takes (a, (b, c)) and
+-- returns ((a, b), c)
 associator
   :: (a, (b, c))
   -> ((a, b), c)
@@ -19,6 +24,9 @@ associator (x, (y, z)) = ((x, y), z)
 
 type (<->) a b = (a -> b, b -> a)
 
+-- | function that returns
+-- ((a | (b | c)) -> ((a | b) | c), ((a | b) | c) -> (a | (b | c)))
+-- where "|" is a short notation for Either
 eitherAssoc
   :: Either a (Either b c)
   <-> Either (Either a b) c

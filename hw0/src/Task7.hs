@@ -13,6 +13,7 @@ null :: [a] -> Bool
 null [] = True
 null _  = False
 
+-- | function that returns False, but hard way
 fun1 :: Bool
 fun1 =
   ((
@@ -40,6 +41,7 @@ fun1 =
     ] :: [(String -> String, String)])
   ) :: [String])
 
+-- | function that takes two numbers and returns list with pair of them
 fun2 :: forall a b. (Num a, Num b) => [(b, a)]
 fun2 =
   ((
@@ -80,6 +82,9 @@ fun2 =
      ) :: Either b a)
   ] :: [Either b a])
 
+-- | function that takes integer number a
+-- and returns (a % 4 == 0) -> (a % 2 == 0)
+-- where (->) is boolean implication
 fun3 :: forall a. Integral a => a -> Bool
 fun3 =
   let impl =

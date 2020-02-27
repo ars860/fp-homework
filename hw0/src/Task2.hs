@@ -10,14 +10,17 @@ import Data.Void (Void)
 
 type Neg a = a -> Void
 
+-- | proof of a -> !!a
 doubleNeg :: a -> Neg (Neg a)
 doubleNeg f x = x f
 
+-- | proof of !!(a | !a)
 excludedNeg :: Neg (Neg (Either a (Neg a)))
 excludedNeg f = f $ Right (f . Left)
 
--- Impossible
--- Proofs using T/N/F model
+-- | Pierce law is impossible in institutional logic
+-- and in haskell
+-- Proof using T/N/F model
 -- Let a = N, b = F
 -- a -> b = !a ∨ b = F ∨ F = F
 -- (a -> b) -> a = !F ∨ N = T ∨ N = T
@@ -26,7 +29,9 @@ excludedNeg f = f $ Right (f . Left)
 pierce :: ((a -> b) -> a) -> a
 pierce = undefined
 
--- Impossible
+-- | Double Negation Elimination is impossible in institutional logic
+-- and in haskell
+-- Proof using T/N/F model
 -- Let a = N
 -- !!a -> a
 -- !a = !N = F
@@ -36,5 +41,6 @@ pierce = undefined
 doubleNegElim :: Neg (Neg a) -> a
 doubleNegElim = undefined
 
+-- | proof of !!!a -> !a
 thirdNegElim :: Neg (Neg (Neg a)) -> Neg a
 thirdNegElim f a = f $ \g -> g a
