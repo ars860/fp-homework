@@ -7,14 +7,26 @@ module Task4
 
 import Data.Function
 
+-- | error message if given integer is not positive.
+errorMessage :: String
+errorMessage = "Expected positive Integer."
+
 iterateElement :: a -> [a]
-iterateElement = fix (\rec n -> n : (rec n))
+iterateElement = fix $ \rec n -> n : (rec n)
 
 fibonacci :: Integer -> Integer
-fibonacci = fix (\rec n -> if (n == 0 || n == 1) then 1 else (rec $ n - 1) + (rec $ n - 2))
+fibonacci =
+  fix $ \rec n -> case n of
+    x | x == 0 || x == 1 -> 1
+      | x < 0            -> error errorMessage
+      | otherwise        -> (rec $ x - 1) + (rec $ x - 2)
 
 factorial :: Integer -> Integer
-factorial = fix (\rec n -> if n == 0 then 1 else (rec $ n - 1) * n)
+factorial =
+  fix $ \rec n -> case n of
+    x | x == 0    -> 1
+      | x < 0     -> error errorMessage
+      | otherwise -> (rec $ x - 1) * x
 
 mapFix :: (a -> b) -> [a] -> [b]
 mapFix = fix $ \rec f arr -> case arr of

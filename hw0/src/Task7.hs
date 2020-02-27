@@ -35,9 +35,8 @@ fun1 =
         (id :: (String -> String) -> String -> String)
       ) :: (String -> String, String) -> String)
     ) :: [(String -> String, String)] -> [String])
-    ([
-      (((++) :: String -> String -> String) ("Dorian " :: String),
-      (" Grey" :: String))
+    ([ (((++) :: String -> String -> String) ("Dorian " :: String)
+     , (" Grey" :: String))
     ] :: [(String -> String, String)])
   ) :: [String])
 
@@ -59,28 +58,26 @@ fun2 =
       ) :: [c])
     ) :: [(d, c)])
   ) :: forall c d. [Either d c] -> [(d, c)])
-  ([
-    ((
-      Left
-        ((
-          ((
-            ((+) :: b -> b -> b)
-            (1 :: b)
-          ) :: b -> b)
-          (2 :: b)
-        ) :: b)
-    ) :: Either b a)
-    ,
-    ((
-      Right
-        ((
-          ((
-            ((^) :: Integral c => a -> c -> a)
-            (2 :: a)
-          ) :: Integral c => c -> a)
-          (6 :: Integer)
-        ) :: a)
-    ) :: Either b a)
+  ([ ((
+       Left
+         ((
+           ((
+             ((+) :: b -> b -> b)
+             (1 :: b)
+           ) :: b -> b)
+           (2 :: b)
+         ) :: b)
+     ) :: Either b a)
+   , ((
+       Right
+         ((
+           ((
+             ((^) :: Integral c => a -> c -> a)
+             (2 :: a)
+           ) :: Integral c => c -> a)
+           (6 :: Integer)
+         ) :: a)
+     ) :: Either b a)
   ] :: [Either b a])
 
 fun3 :: forall a. Integral a => a -> Bool

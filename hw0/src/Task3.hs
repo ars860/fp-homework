@@ -55,6 +55,7 @@ contraction =
     (const identity)
 
 
+-- It is larger then 80-100 symbols, but it is kinda inseparable
 -- T[\f.\x.\y.f y x] =>
 -- T[\f.T[\x.\y.f y x]] =>
 -- T[\f.T[\x.T[\y.f y x]]] =>

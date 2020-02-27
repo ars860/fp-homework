@@ -37,4 +37,4 @@ doubleNegElim :: Neg (Neg a) -> a
 doubleNegElim = undefined
 
 thirdNegElim :: Neg (Neg (Neg a)) -> Neg a
-thirdNegElim f a = f (\g -> g a)
+thirdNegElim f a = f $ \g -> g a

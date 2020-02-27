@@ -21,4 +21,4 @@ churchMult :: Nat a -> Nat a -> Nat a
 churchMult a b = \f x -> a (b f) x
 
 churchToInt :: Nat Integer -> Integer
-churchToInt a = a (\x -> x + 1) 0
+churchToInt a = a (+ 1) 0

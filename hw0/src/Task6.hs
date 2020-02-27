@@ -18,11 +18,11 @@ null _  = False
 
 mapMaybe :: (a -> Maybe b) -> [a] -> [b]
 mapMaybe _ [] = []
-mapMaybe f (x:xs) =
+mapMaybe f (x : xs) =
   let rs = mapMaybe f xs in
     case f x of
       Nothing -> rs
-      Just r  -> r:rs
+      Just r  -> r : rs
 
 fun1 :: (Either String a, Either String b)
 fun1 = Task1.distributivity (Left ("harold" ++ " hide " ++ "the " ++ "pain"))
