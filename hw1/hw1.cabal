@@ -6,19 +6,43 @@ description:         Task 1 for FP ITMO course
 homepage:            https://github.com//fp-homework/tree/master/hw1#readme
 license:             MIT
 license-file:        LICENSE
-author:              Author name here
-maintainer:          example@example.com
-copyright:           2020 Author name here
+author:              Arkady Siuris
+maintainer:          arss860@gmail.com
+copyright:           2020 Arkady Siuris
 
 category:            Web
 build-type:          Simple
 extra-source-files:  README.md
-cabal-version:       >=1.10
+cabal-version:       1.12
 tested-with:         GHC == 8.0.1
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Lib
+  exposed-modules:     Block1.Task1 Block1.Task2 Block1.Task3
+                       Block2.Task1 Block2.Task2
+                       Block3.Task1 Block3.Task2
+                       Block4.Task1 Block4.Task2 Block4.Task3
+                       Block5.Task1 Block5.Task2
+                       Block6.Task1 Block6.Task2 Block6.Task3
+                       Block6.Task4
   ghc-options:         -Wall
   build-depends:       base >= 4.9 && < 5
+                     , monad-loops
+                     , mtl
   default-language:    Haskell2010
+
+test-suite hw1-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base >= 4.9 && < 5
+                     , hw1
+                     , hspec
+                     , QuickCheck
+                     , hspec-expectations
+                     , containers
+  ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
+  other-modules:       Block1Spec Block2Spec Block3Spec
+                       Block4Spec Block5Spec Block6Spec
+  default-language:    Haskell2010
+  build-tool-depends:  hspec-discover:hspec-discover

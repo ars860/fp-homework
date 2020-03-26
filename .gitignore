@@ -52,5 +52,6 @@ TAGS
 .DS_Store
 *.cmd
 *.exe
+*.bat
 .hlint.yaml
 .stylish-haskell.yaml
