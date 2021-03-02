@@ -6,9 +6,9 @@ description:         Task 2 for FP ITMO course
 homepage:            https://github.com//fp-homework/tree/master/hw2#readme
 license:             MIT
 license-file:        LICENSE
-author:              Author name here
-maintainer:          example@example.com
-copyright:           2020 Author name here
+author:              Arkady Siuris
+maintainer:          arss860@gmail.com
+copyright:           2020 Arkady Siuris
 
 category:            Web
 build-type:          Simple
@@ -18,15 +18,53 @@ tested-with:         GHC == 8.0.1
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Lib
+  exposed-modules:     Utils FileSystem
   ghc-options:         -Wall
   build-depends:       base >= 4.9 && < 5
+                     , filepath
+                     , containers
+                     , directory
+                     , mtl
+                     , bytestring
+                     , time
+                     , Diff
+                     , utf8-string
+                     , monad-loops
   default-language:    Haskell2010
 
 executable hw2
   hs-source-dirs:      app
   main-is:             Main.hs
-  ghc-options:         -Wall -Werror -threaded -rtsopts -with-rtsopts=-N
+  ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
                      , hw2
+                     , optparse-applicative
+                     , filepath
+                     , monad-loops
+                     , split
+                     , mtl
+                     , directory
+                     , deepseq
+                     , text
+                     , containers
+                     , bytestring
+                     , time
   default-language:    Haskell2010
+
+test-suite hw2-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base >= 4.9 && < 5
+                     , hw2
+                     , hspec
+                     , QuickCheck
+                     , hspec-expectations
+                     , containers
+                     , filepath
+                     , directory
+                     , utf8-string
+  ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
+  other-modules:       UtilsSpec FileSystemSpec
+  default-language:    Haskell2010
+  build-tool-depends:  hspec-discover:hspec-discover
